@@ -16,7 +16,12 @@
                     <ul class="main-menu">
                         <li class="active-menu"><a href="/">Trang Chủ</a> </li>
 
-                        {!! $menusHtml !!}
+                        <li class="menu-item-has-children">
+                            <a href="/store">Cửa Hàng</a>
+                            <ul class="sub-menu">
+                                {!! $menusHtml !!}
+                            </ul>
+                        </li>
 
                         <li>
                             <a href="contact.html">Liên Hệ</a>
