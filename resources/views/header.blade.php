@@ -18,7 +18,7 @@
 
                         <li class="menu-item-has-children">
                             <a href="/store">Cửa Hàng</a>
-                            <ul class="sub-menu">
+                            <ul  class="sub-menu flex-w">
                                 {!! $menusHtml !!}
                             </ul>
                         </li>
@@ -102,3 +102,5 @@
         </div>
     </div>
 </header>
+
+

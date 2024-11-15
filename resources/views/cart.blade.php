@@ -37,7 +37,6 @@
                         </li>
                     @endforeach
                 @endif
-
             </ul>
 
             <div class="w-full">

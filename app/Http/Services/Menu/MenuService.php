@@ -36,7 +36,8 @@ class MenuService
                 'parent_id' => (int)$request->input('parent_id'),
                 'description' => (string)$request->input('description'),
                 'content' => (string)$request->input('content'),
-                'active' => (string)$request->input('active')
+                'active' => (string)$request->input('active'),
+                'category_id' => (int)$request->input('category_id')
             ]);
 
             Session::flash('success', 'Tạo Danh Mục Thành Công');
@@ -58,6 +59,7 @@ class MenuService
         $menu->description = (string)$request->input('description');
         $menu->content = (string)$request->input('content');
         $menu->active = (string)$request->input('active');
+        $menu->category_id = (int)$request->input('category_id');
         $menu->save();
 
         Session::flash('success', 'Cập nhật thành công Danh mục');
@@ -95,5 +97,10 @@ class MenuService
             ->orderByDesc('id')
             ->paginate(12)
             ->withQueryString();
+    }
+
+    public function getCategories()
+    {
+        return Menu::with('children')->where('parent_id', 0)->get();
     }
 }

@@ -21,4 +21,9 @@ class Menu extends Model
     {
         return $this->hasMany(Product::class, 'menu_id', 'id');
     }
+
+    public function children()
+    {
+        return $this->hasMany(Menu::class, 'parent_id');
+    }
 }
