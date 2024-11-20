@@ -6,11 +6,15 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\Users\RegisterController;
 
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
+Route::get('admin/users/register', [RegisterController::class, 'index'])->name('register');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
+Route::post('admin/users/register/store', [RegisterController::class, 'store']);
+Route::get('admin/users/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 
@@ -56,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
+Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('main');
 Route::post('/services/load-product', [App\Http\Controllers\MainController::class, 'loadProduct']);
 
 Route::get('danh-muc/{id}-{slug}.html', [App\Http\Controllers\MenuController::class, 'index']);

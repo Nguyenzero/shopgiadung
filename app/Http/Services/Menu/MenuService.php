@@ -59,7 +59,7 @@ class MenuService
         $menu->description = (string)$request->input('description');
         $menu->content = (string)$request->input('content');
         $menu->active = (string)$request->input('active');
-        $menu->category_id = (int)$request->input('category_id');
+        
         $menu->save();
 
         Session::flash('success', 'Cập nhật thành công Danh mục');

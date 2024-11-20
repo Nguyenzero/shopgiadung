@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @include('admin.head')
 </head>
+
 <body class="hold-transition login-page">
-        <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>Admin</b></a>
-        </div>
+    <div class="login-box">
+        
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
@@ -43,6 +43,9 @@
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
+                        <p class="mb-0">
+                        <a href="{{ route('register') }}">Register a new membership</a> 
+                        </p>
                         <!-- /.col -->
                     </div>
                     @csrf
@@ -50,8 +53,9 @@
             </div>
         </div>
     </div>
-<!-- /.login-box -->
+    <!-- /.login-box -->
 
     @include('admin.footer')
 </body>
+
 </html>

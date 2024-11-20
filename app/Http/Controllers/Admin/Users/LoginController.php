@@ -28,10 +28,20 @@ class LoginController extends Controller
                 'password' => $request->input('password')
             ], $request->input('remember'))) {
 
-            return redirect()->route('admin');
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('admin');
+            } else {
+                return redirect()->route('main');
+            }
         }
 
         Session::flash('error', 'Email hoặc Password không đúng');
         return redirect()->back();
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

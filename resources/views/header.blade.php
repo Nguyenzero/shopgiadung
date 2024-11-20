@@ -41,6 +41,19 @@
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 position-relative">
+                        <a href="/admin/users/login">
+                            <i class="zmdi zmdi-account" style="color: black;"></i>
+                            <span class="stext-101 cl2 hov-cl1 trans-04 position-absolute" style="top: 100%; left: 50%; display: none;">
+                                login
+                            </span> 
+                            @if(Auth::check() && Auth::user()->role === 'admin')
+                                <span class="stext-101 cl2 hov-cl1 trans-04 position-absolute admin" style="top: 120%; left: 50%; display: none;">
+                                    admin
+                                </span>
+                            @endif
+                        </a>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -85,6 +98,7 @@
         </ul>
     </div>
 
+    
     <!-- Modal Search -->
     <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div class="container-search-header">
@@ -100,6 +114,21 @@
             </form>
         </div>
     </div>
+    
+    <script>
+        document.querySelectorAll('.icon-header-item').forEach(function (element) {
+            element.addEventListener('mouseenter', function () {
+                this.querySelectorAll('span').forEach(function (span) {
+                    span.style.display = 'block';
+                });
+            });
+            element.addEventListener('mouseleave', function () {
+                this.querySelectorAll('span').forEach(function (span) {
+                    span.style.display = 'none';
+                });
+            });
+        });
+    </script>
 </header>
 
 

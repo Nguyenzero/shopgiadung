@@ -90,7 +90,7 @@
             </div>
 
             <div id="loadProduct">
-                @include('products.list')
+                @include('products.list', ['products' => $products->take(8)])
             </div>
 
 
