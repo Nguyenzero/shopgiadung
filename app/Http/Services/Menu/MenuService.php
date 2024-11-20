@@ -89,6 +89,11 @@ class MenuService
             ->select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1);
 
+        $childCategoryIds = $this->getChildCategoryIds($menu->id);
+        if (!empty($childCategoryIds)) {
+            $query->orWhereIn('menu_id', $childCategoryIds);
+        }
+
         if ($request->input('price')) {
             $query->orderBy('price', $request->input('price'));
         }
@@ -99,8 +104,24 @@ class MenuService
             ->withQueryString();
     }
 
+    private function getChildCategoryIds($parentId)
+    {
+        $childCategories = Menu::where('parent_id', $parentId)->get();
+        $childCategoryIds = [];
+        foreach ($childCategories as $childCategory) {
+            $childCategoryIds[] = $childCategory->id;
+            $childCategoryIds = array_merge($childCategoryIds, $this->getChildCategoryIds($childCategory->id));
+        }
+        return $childCategoryIds;
+    }
+
     public function getCategories()
     {
         return Menu::with('children')->where('parent_id', 0)->get();
+    }
+
+    public function getChildCategories($parentId)
+    {
+        return Menu::where('parent_id', $parentId)->get();
     }
 }

@@ -6,3 +6,20 @@ body, .main-menu > li > a, .ltext-102 {
 .hidden  {
     display: none !important;
 }
+
+.sub-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.sub-menu li {
+    margin-right: 20px;
+}
+
+.text-red-500 {
+    color: #f56565;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}

@@ -94,14 +94,14 @@
                             </div>
                             <ul class="flex-w">
                                 @foreach($categories as $category)
-                                    <li class="p-b-6 m-r-20 position-relative">
-                                        <a href="{{ request()->fullUrlWithQuery(['category' => $category->id]) }}" class="filter-link stext-106 trans-04">
+                                    <li class="p-b-6 m-r-20 position-relative {{ $category->parent_id == 0 ? 'd-inline-block' : '' }}">
+                                        <a href="{{ request()->fullUrlWithQuery(['category' => $category->id]) }}" class="filter-link stext-106 trans-04 {{ $category->parent_id == 0 ? 'text-red-500 text-lg' : '' }}">
                                             {{ $category->name }}
                                         </a>
                                         @if($category->children)
-                                            <ul class="position-absolute bg-white p-t-10 p-l-10 p-r-10 p-b-10" style="display: none;">
+                                            <ul class="position-absolute bg-white p-t-10 p-l-10 p-r-10 p-b-10 d-flex flex-row flex-wrap" style="display: none;">
                                                 @foreach($category->children as $child)
-                                                    <li class="p-b-6">
+                                                    <li class="p-b-6 m-r-20">
                                                         <a href="{{ request()->fullUrlWithQuery(['category' => $child->id]) }}" class="filter-link stext-106 trans-04">
                                                             {{ $child->name }}
                                                         </a>
@@ -109,6 +109,21 @@
                                                 @endforeach
                                             </ul>
                                         @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="filter-col4 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Subcategories
+                            </div>
+                            <ul>
+                                @foreach($childCategories as $childCategory)
+                                    <li class="p-b-6">
+                                        <a href="{{ request()->fullUrlWithQuery(['category' => $childCategory->id]) }}" class="filter-link stext-106 trans-04">
+                                            {{ $childCategory->name }}
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -128,7 +143,7 @@
 <script>
     document.querySelectorAll('.filter-col3 li.position-relative').forEach(function (element) {
         element.addEventListener('mouseenter', function () {
-            this.querySelector('ul').style.display = 'block';
+            this.querySelector('ul').style.display = 'flex';
         });
         element.addEventListener('mouseleave', function () {
             this.querySelector('ul').style.display = 'none';

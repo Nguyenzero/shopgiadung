@@ -16,6 +16,9 @@ class CartService
 {
     public function create($request)
     {
+
+      
+        
         $qty = (int)$request->input('num_product');
         $product_id = (int)$request->input('product_id');
 
@@ -25,6 +28,7 @@ class CartService
         }
 
         $carts = Session::get('carts');
+       # dd($carts);
         if (is_null($carts)) {
             Session::put('carts', [
                 $product_id => $qty
@@ -73,6 +77,8 @@ class CartService
         return true;
     }
 
+
+     
     public function addCart($request)
     {
         try {
@@ -102,7 +108,7 @@ class CartService
             Session::forget('carts');
         } catch (\Exception $err) {
             DB::rollBack();
-            Session::flash('error', 'Đặt Hàng Lỗi, Vui lòng thử lại sau');
+           
             return false;
         }
 

@@ -11,18 +11,19 @@
                     <img src="/template/images/icons/logo-01.png" alt="IMG-LOGO">
                 </a>
 
-                <!-- Menu desktop -->
+                <!-- Menu desktop -->       
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu"><a href="/">Trang Chủ</a> </li>
-
+                        
+                        
                         <li class="menu-item-has-children">
-                            <a href="/store">Cửa Hàng</a>
-                            <ul  class="sub-menu flex-w">
+                          
+                            
                                 {!! $menusHtml !!}
-                            </ul>
+                           
                         </li>
-
+                        </ul>
                         <li>
                             <a href="contact.html">Liên Hệ</a>
                         </li>
@@ -71,7 +72,6 @@
         </div>
     </div>
 
-
     <!-- Menu Mobile -->
     <div class="menu-mobile">
         <ul class="main-menu-m">
@@ -82,7 +82,6 @@
             <li>
                 <a href="contact.html">Liên Hệ</a>
             </li>
-
         </ul>
     </div>
 
@@ -102,5 +101,6 @@
         </div>
     </div>
 </header>
+
 
 

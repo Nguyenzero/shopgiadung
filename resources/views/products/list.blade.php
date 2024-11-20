@@ -4,7 +4,7 @@
             <!-- Block2 -->
             <div class="block2">
                 <div class="block2-pic hov-img0">
-                    <img src="{{ $product->thumb }}" alt="{{ $product->name }}">
+                    <img src="{{ $product->thumb }}" alt="{{ $product->name }}  " style="height: 300px; width: 100%;">
                 </div>
 
                 <div class="block2-txt flex-w flex-t p-t-14">

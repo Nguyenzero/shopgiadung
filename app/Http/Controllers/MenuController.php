@@ -19,12 +19,14 @@ class MenuController extends Controller
         $menu = $this->menuService->getId($id);
         $products = $this->menuService->getProduct($menu, $request);
         $categories = $this->menuService->getCategories();
+        $childCategories = $this->menuService->getChildCategories($id);
 
         return view('menu', [
             'title' => $menu->name,
             'products' => $products,
             'menu' => $menu,
-            'categories' => $categories
+            'categories' => $categories,
+            'childCategories' => $childCategories
         ]);
     }
 }
