@@ -11,10 +11,12 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     protected $productService;
+    protected $productCount;
 
     public function __construct(ProductAdminService $productService)
     {
         $this->productService = $productService;
+        $this->productCount = Product::count();
     }
 
     public function index()
@@ -33,7 +35,6 @@ class ProductController extends Controller
         ]);
     }
 
-
     public function store(ProductRequest $request)
     {
         $this->productService->insert($request);
@@ -50,7 +51,6 @@ class ProductController extends Controller
         ]);
     }
 
-
     public function update(Request $request, Product $product)
     {
         $result = $this->productService->update($request, $product);
@@ -60,7 +60,6 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
-
 
     public function destroy(Request $request)
     {
@@ -74,4 +73,5 @@ class ProductController extends Controller
 
         return response()->json([ 'error' => true ]);
     }
+    
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use Illuminate\Support\Facades\Session;

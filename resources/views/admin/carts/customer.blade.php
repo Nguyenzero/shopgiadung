@@ -8,6 +8,7 @@
             <th>Tên Khách Hàng</th>
             <th>Số Điện Thoại</th>
             <th>Email</th>
+            <th>Tình Trạng</th>
             <th>Ngày Đặt hàng</th>
             <th style="width: 100px">&nbsp;</th>
         </tr>
@@ -19,15 +20,14 @@
                 <td>{{ $customer->name }}</td>
                 <td>{{ $customer->phone }}</td>
                 <td>{{ $customer->email }}</td>
+                <td>{{ $customer->status}}</td>
                 <td>{{ $customer->created_at }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}">
                         <i class="fas fa-eye"></i>
                     </a>
-                    
                     <a href="#" class="btn btn-danger btn-sm"
-                        
-                        onclick="removeRow('{{ url('/admin/customers/destroy/' . $customer->id) }}')">
+                        onclick="removeRow('{{ $customer->id }}', '/admin/customers/destroy')">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>

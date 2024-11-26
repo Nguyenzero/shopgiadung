@@ -33,4 +33,27 @@ class CartController extends Controller
             'carts' => $carts
         ]);
     }
+
+    public function update(Request $request, $customerId)
+    {
+        $customer = Customer::find($customerId);
+        $customer->status = $request->input('status');
+        $customer->save();
+
+        return redirect()->back()->with('success', 'Order status updated successfully.');
+    }
+
+    public function destroy(Request $request)
+    {
+        $customer = Customer::find($request->input('id'));
+        if ($customer) {
+            $customer->delete();
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công khách hàng'
+            ]);
+        }
+
+        return response()->json([ 'error' => true ]);
+    }
 }

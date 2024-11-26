@@ -25,7 +25,7 @@
                         </li>
                         </ul>
                         <li>
-                            <a href="contact.html">Liên Hệ</a>
+                            <a href="{{ route('contact') }}">Liên Hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -42,17 +42,28 @@
                     </div>
 
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 position-relative">
-                        <a href="/admin/users/login">
-                            <i class="zmdi zmdi-account" style="color: black;"></i>
-                            <span class="stext-101 cl2 hov-cl1 trans-04 position-absolute" style="top: 100%; left: 50%; display: none;">
-                                login
-                            </span> 
-                            @if(Auth::check() && Auth::user()->role === 'admin')
-                                <span class="stext-101 cl2 hov-cl1 trans-04 position-absolute admin" style="top: 120%; left: 50%; display: none;">
-                                    admin
+                        @if(Auth::check())
+                            <a href="/admin/users/logout">
+                                <i class="zmdi zmdi-account" style="color: black;"></i>
+                                <span class="stext-101 cl2 hov-cl1 trans-04 position-absolute" style="top: 100%; left: 50%; display: none;">
+                                    logout
                                 </span>
+                            </a>
+                            @if(Auth::user()->role === 'admin')
+                                <a href="/admin">
+                                    <span class="stext-101 cl2 hov-cl1 trans-04 position-absolute admin" style="top: 120%; left: 50%; display: none;">
+                                        admin
+                                    </span>
+                                </a>
                             @endif
-                        </a>
+                        @else
+                            <a href="/admin/users/login">
+                                <i class="zmdi zmdi-account" style="color: black;"></i>
+                                <span class="stext-101 cl2 hov-cl1 trans-04 position-absolute" style="top: 100%; left: 50%; display: none;">
+                                    login
+                                </span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </nav>
@@ -93,7 +104,7 @@
             {!! $menusHtml !!}
 
             <li>
-                <a href="contact.html">Liên Hệ</a>
+                <a href="{{ route('contact') }}">Liên Hệ</a>
             </li>
         </ul>
     </div>
@@ -130,6 +141,3 @@
         });
     </script>
 </header>
-
-
-
